@@ -25,4 +25,20 @@ public class UserRepositoryMap implements IUserRepository{
     public Optional<User> findById(String id) {
         return Optional.of(usersMap.get(id));
     }
+    
+    @Override
+    public User updateUser(String id, User user) {
+    	if( usersMap.containsKey(id)) {
+    		return usersMap.put(id, user);
+    	}
+    	return null;
+    }
+    
+    @Override
+    public User deleteUser(String id) {
+    	if( usersMap.containsKey(id)) {
+    	 return  usersMap.remove( id ) ;
+    	}
+    	return null;
+    }
 }
