@@ -3,9 +3,6 @@ package org.adaSchool.users.controller;
 import org.adaSchool.users.controller.dto.UserDTO;
 import org.adaSchool.users.repository.IUserRepository;
 import org.adaSchool.users.repository.model.User;
-import org.adaschool.User.controller.PathVariable;
-import org.adaschool.User.controller.RequestBody;
-import org.adaschool.User.controller.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +24,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAll(){ return userRepository.getAll();}
+    public List<User> all(){ return userRepository.getAll();}
 
     @GetMapping("/{id}")
     public Optional<User> findById(@PathVariable String id ){
@@ -40,7 +37,7 @@ public class UserController {
     }
     
     @DeleteMapping("/{id}")
-    public User deleteUser(@PathVariable String id ){
+    public User delete(@PathVariable String id ){
         return userRepository.deleteUser(id);
     }
 }
