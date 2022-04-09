@@ -8,12 +8,14 @@ public class UserDTO implements Serializable {
     private String genre;
     private Boolean isActive;
     private String password;
+    private String email;
 
-    public UserDTO(String nationalId, String name, String genre, Boolean isActive, String password) {
+    public UserDTO(String nationalId, String name, String genre, Boolean isActive, String email, String password) {
         this.nationalId = nationalId;
         this.name = name;
         this.genre = genre;
         this.isActive = isActive;
+        this.email = email;
         this.password = password;
     }
 
@@ -55,5 +57,13 @@ public class UserDTO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -41,4 +41,9 @@ public class UserRepositoryMap implements IUserRepository{
     	}
     	return null;
     }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return usersMap.values().stream().filter(user -> user.getEmail().equals(email)).findFirst();
+    }
 }

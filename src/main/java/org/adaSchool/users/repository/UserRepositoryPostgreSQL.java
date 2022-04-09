@@ -34,7 +34,15 @@ public class UserRepositoryPostgreSQL implements IUserRepository {
   
     @Override
     public User deleteUser(String id) {
-    	postgresRepository.deleteById(id);
-    	 return null;
+        Optional<User> ans = findById(id);
+        if(ans.isPresent()){
+            postgresRepository.deleteById(id);
+        }
+        return ans.get();
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return postgresRepository.findFirstByEmail(email);
     }
 }

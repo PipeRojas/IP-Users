@@ -22,6 +22,7 @@ public class User implements Serializable {
     private Boolean isActive;
     private final Date created = new Date();
     private String passwordHash;
+    private String email;
 
     public User() {
     }
@@ -31,14 +32,16 @@ public class User implements Serializable {
         this.name = userDTO.getName();
         this.genre = userDTO.getGenre();
         this.isActive = userDTO.getActive();
+        this.email = userDTO.getEmail();
         this.passwordHash = BCrypt.hashpw( userDTO.getPassword(), BCrypt.gensalt() );
     }
 
-    public User(String nationalId, String name, String genre, Boolean isActive, String password) {
+    public User(String nationalId, String name, String genre, Boolean isActive, String email, String password) {
         this.nationalId = nationalId;
         this.name = name;
         this.genre = genre;
         this.isActive = isActive;
+        this.email = email;
         this.passwordHash = BCrypt.hashpw( password, BCrypt.gensalt() );
     }
 
@@ -78,6 +81,14 @@ public class User implements Serializable {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPasswordHash() {
         return passwordHash;
     }
@@ -95,11 +106,11 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(nationalId, user.nationalId) && Objects.equals(name, user.name) && Objects.equals(genre, user.genre) && Objects.equals(isActive, user.isActive) && Objects.equals(created, user.created);
+        return Objects.equals(id, user.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nationalId, name, genre, isActive, created);
+        return Objects.hash(id);
     }
 }
