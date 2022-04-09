@@ -1,6 +1,7 @@
 package org.adaSchool.users.repository.model;
 
 import org.adaSchool.users.controller.dto.UserDTO;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ public class User implements Serializable {
     private String genre;
     private Boolean isActive;
     private final Date created = new Date();
+    private String passwordHash;
 
     public User() {
     }
@@ -29,13 +31,15 @@ public class User implements Serializable {
         this.name = userDTO.getName();
         this.genre = userDTO.getGenre();
         this.isActive = userDTO.getActive();
+        this.passwordHash = BCrypt.hashpw( userDTO.getPassword(), BCrypt.gensalt() );
     }
 
-    public User(String nationalId, String name, String genre, Boolean isActive) {
+    public User(String nationalId, String name, String genre, Boolean isActive, String password) {
         this.nationalId = nationalId;
         this.name = name;
         this.genre = genre;
         this.isActive = isActive;
+        this.passwordHash = BCrypt.hashpw( password, BCrypt.gensalt() );
     }
 
     public String getNationalId() {
@@ -72,6 +76,14 @@ public class User implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public Date getCreated() {
