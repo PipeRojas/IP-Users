@@ -26,4 +26,15 @@ public class UserRepositoryPostgreSQL implements IUserRepository {
     public Optional<User> findById(String id) {
         return Optional.of(postgresRepository.getById(id));
     }
+    
+    @Override
+    public User updateUser(String id, User user) {
+    	return postgresRepository.save(user);
+    }
+  
+    @Override
+    public User deleteUser(String id) {
+    	postgresRepository.deleteById(id);
+    	 return null;
+    }
 }

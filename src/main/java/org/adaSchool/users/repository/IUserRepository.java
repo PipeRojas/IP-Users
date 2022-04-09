@@ -13,7 +13,7 @@ public interface IUserRepository {
 
     Optional<User> findById(String id );
 
-    //User updateUser(String id, User user);
+    User updateUser(String id, User user);
 
-    //User deleteUser(String id);
+    User deleteUser(String id);
 }

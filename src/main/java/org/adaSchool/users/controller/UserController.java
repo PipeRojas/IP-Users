@@ -24,10 +24,20 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAll(){ return userRepository.getAll();}
+    public List<User> all(){ return userRepository.getAll();}
 
     @GetMapping("/{id}")
     public Optional<User> findById(@PathVariable String id ){
         return userRepository.findById( id );
+    }
+    
+    @PutMapping("/{id}")
+    public User update(@PathVariable String id, @RequestBody UserDTO userDto ){
+        return userRepository.updateUser(id, new User ( userDto ) );
+    }
+    
+    @DeleteMapping("/{id}")
+    public User delete(@PathVariable String id ){
+        return userRepository.deleteUser(id);
     }
 }
