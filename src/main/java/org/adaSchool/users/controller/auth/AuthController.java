@@ -2,7 +2,7 @@ package org.adaSchool.users.controller.auth;
 
 import org.adaSchool.users.controller.security.JWTGenerate;
 import org.adaSchool.users.exception.InvalidCredentialsException;
-import org.adaSchool.users.repository.IUserRepository;
+import org.adaSchool.users.service.IUserService;
 import org.adaSchool.users.repository.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class AuthController {
     private JWTGenerate jwtGenerate;
 
     @Autowired
-    IUserRepository userService;
+    IUserService userService;
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request){
         User user = userService.findByEmail(request.getEmail()).get();

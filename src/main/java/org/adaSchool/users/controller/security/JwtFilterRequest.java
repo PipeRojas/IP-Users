@@ -1,6 +1,6 @@
 package org.adaSchool.users.controller.security;
 
-import org.adaSchool.users.repository.IUserRepository;
+import org.adaSchool.users.service.IUserService;
 import org.adaSchool.users.repository.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,7 +19,7 @@ public class JwtFilterRequest extends OncePerRequestFilter {
     private JWTGenerate jwtGenerate;
 
     @Autowired
-    private IUserRepository userService;
+    private IUserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

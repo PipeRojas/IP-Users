@@ -1,12 +1,14 @@
 package org.adaSchool.users.repository.model;
 
 import org.adaSchool.users.controller.dto.UserDTO;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-
+/**
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+ */
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -17,12 +19,12 @@ import java.util.UUID;
 @Document("user")
 public class User implements Serializable {
     @Id
-    private final String id = UUID.randomUUID().toString();
+    private String id;
     private String nationalId;
     private String name;
     private String genre;
     private Boolean isActive;
-    private final Date created = new Date();
+    private Date created;
     private String passwordHash;
     private String email;
 
@@ -38,13 +40,14 @@ public class User implements Serializable {
         this.passwordHash = BCrypt.hashpw( userDTO.getPassword(), BCrypt.gensalt() );
     }
 
-    public User(String nationalId, String name, String genre, Boolean isActive, String email, String password) {
+    public User(String nationalId, String name, String genre, Boolean isActive, String email, String password, String id) {
         this.nationalId = nationalId;
         this.name = name;
         this.genre = genre;
         this.isActive = isActive;
         this.email = email;
         this.passwordHash = BCrypt.hashpw( password, BCrypt.gensalt() );
+        this.id = id;
     }
 
     public String getNationalId() {
@@ -101,6 +104,10 @@ public class User implements Serializable {
 
     public Date getCreated() {
         return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     @Override

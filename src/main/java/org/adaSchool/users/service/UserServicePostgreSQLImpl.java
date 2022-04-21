@@ -1,16 +1,16 @@
-package org.adaSchool.users.repository;
+package org.adaSchool.users.service;
 
+import org.adaSchool.users.repository.IUserJpaRepository;
 import org.adaSchool.users.repository.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.adaSchool.users.service.IUserService;
 
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
-public class UserRepositoryPostgreSQL implements IUserRepository {
-    @Autowired
+//@Service
+/**
+public class UserServicePostgreSQLImpl implements IUserService {
+    //@Autowired
     IUserJpaRepository postgresRepository;
     @Override
     public User createUser(User user) {
@@ -46,3 +46,4 @@ public class UserRepositoryPostgreSQL implements IUserRepository {
         return postgresRepository.findFirstByEmail(email);
     }
 }
+ */

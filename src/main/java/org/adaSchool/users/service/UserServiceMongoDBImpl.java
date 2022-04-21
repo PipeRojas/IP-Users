@@ -1,14 +1,16 @@
-package org.adaSchool.users.repository;
+package org.adaSchool.users.service;
 
+import org.adaSchool.users.repository.IUserMongoDBRepository;
 import org.adaSchool.users.repository.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class UserRepositoryMongoDB implements IUserRepository{
+@Service
+public class UserServiceMongoDBImpl implements IUserService {
     @Autowired
     IUserMongoDBRepository mongoRepository;
     @Override

@@ -1,15 +1,15 @@
-package org.adaSchool.users.repository;
+package org.adaSchool.users.service;
 
 import org.adaSchool.users.repository.model.User;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
-public class UserRepositoryMap implements IUserRepository{
+//@Service
+public class UserServiceMapImpl implements IUserService {
     private static final HashMap<String, User> usersMap = new HashMap<>();
     @Override
     public User createUser(User user) {

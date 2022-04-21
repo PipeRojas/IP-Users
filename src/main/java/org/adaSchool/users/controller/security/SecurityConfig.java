@@ -28,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .authorizeRequests()
                 //This line can be repeated depending on multiple filters
-                //.antMatchers( "/**/authenticate" ).permitAll()
-                .antMatchers( "/**" ).permitAll()
+                .antMatchers( "/**/authenticate" ).permitAll()
+                //.antMatchers( "/**" ).permitAll()
                 .anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }

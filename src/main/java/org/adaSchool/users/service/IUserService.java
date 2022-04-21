@@ -1,11 +1,11 @@
-package org.adaSchool.users.repository;
+package org.adaSchool.users.service;
 
 import org.adaSchool.users.repository.model.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface IUserRepository {
+public interface IUserService {
 
     User createUser(User user);
 

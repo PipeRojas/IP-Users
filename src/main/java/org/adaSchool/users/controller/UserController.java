@@ -1,7 +1,7 @@
 package org.adaSchool.users.controller;
 
 import org.adaSchool.users.controller.dto.UserDTO;
-import org.adaSchool.users.repository.IUserRepository;
+import org.adaSchool.users.service.IUserService;
 import org.adaSchool.users.repository.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +12,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
-    private final IUserRepository userRepository;
-    public UserController(@Autowired IUserRepository userRepository )
+    private final IUserService userRepository;
+    public UserController(@Autowired IUserService userRepository )
     {
         this.userRepository = userRepository;
     }
