@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-
+//@Repository
 public class UserRepositoryMap implements IUserRepository{
     private static final HashMap<String, User> usersMap = new HashMap<>();
     @Override

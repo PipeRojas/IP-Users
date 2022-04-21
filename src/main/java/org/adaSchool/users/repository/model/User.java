@@ -1,6 +1,7 @@
 package org.adaSchool.users.repository.model;
 
 import org.adaSchool.users.controller.dto.UserDTO;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.Entity;
@@ -11,8 +12,9 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-@Entity
-@Table(name= "user", schema = "public")
+//@Entity
+//@Table(name= "user", schema = "public")
+@Document("user")
 public class User implements Serializable {
     @Id
     private final String id = UUID.randomUUID().toString();
